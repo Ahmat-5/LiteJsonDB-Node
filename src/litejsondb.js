@@ -224,5 +224,24 @@ class JsonDB {
         return typeof data === 'object' && data !== null;
     }
 }
+//AHMAT OUMAR ISSA, aliace BEN ADDAKHOUSS: Tel : +235-66-61-62-34, email: oumarissaahmat@gmail.com 
+merci de me contacter en cas de nécessité. Merci!
+
+//Sauvegarde automatique après la modification de la base de données 
+    enableAutoSave(interval = 30000) { // Interval in milliseconds
+        this.autoSaveInterval = setInterval(() => {
+            this._saveDb();
+        }, interval);
+        console.log(`\x1b[32mAuto-save enabled every ${interval / 1000} seconds.\x1b[0m`);
+    }
+
+    disableAutoSave() {
+        if (this.autoSaveInterval) {
+            clearInterval(this.autoSaveInterval);
+            console.log(`\x1b[31mAuto-save disabled.\x1b[0m`);
+        } else {
+            console.log(`\x1b[33mAuto-save was not enabled.\x1b[0m`);
+        }
+    }
 
 module.exports = JsonDB;
